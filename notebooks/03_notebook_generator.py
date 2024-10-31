@@ -102,7 +102,28 @@ for col in categorical_columns:
     print("Percentages (%):")
     print(ct_pct.round(2))
     print("\\n" + "="*50)
+"""),
+
+    # Calculate and display the correlation matrix
+    nbf.v4.new_markdown_cell("## Correlation Analysis"),
+    nbf.v4.new_code_cell("""
+# Calculate correlation matrix for numerical variables
+correlation_matrix = df.corr()
+
+# Display correlation matrix
+correlation_matrix
+"""),
+
+    # Plotting the correlation matrix using a heatmap
+    nbf.v4.new_markdown_cell("## Heatmap of Correlation Matrix"),
+    nbf.v4.new_code_cell("""
+# Visualize the correlation matrix using a heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, fmt=".2f", square=True, cbar_kws={'shrink': .8})
+plt.title('Correlation Matrix Heatmap')
+plt.show()
 """)
+
 ]
 
 # Create the notebook
