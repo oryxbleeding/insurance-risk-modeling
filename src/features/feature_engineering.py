@@ -1,10 +1,14 @@
 
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 import os
 
-def feature_engineering(input_path='data/processed/cleaned_insurance_data.csv', output_path='data/processed/final_insurance_data.csv'):
+def feature_engineering_and_split(input_path='data/processed/cleaned_insurance_data.csv',
+                                  train_output_path='data/processed/train_data.csv',
+                                  test_output_path='data/processed/test_data.csv',
+                                  test_size=0.2, random_state=42):
     # Load the cleaned dataset
     df = pd.read_csv(input_path)
     
@@ -28,12 +32,18 @@ def feature_engineering(input_path='data/processed/cleaned_insurance_data.csv', 
     scaler = StandardScaler()
     df[numerical_columns] = scaler.fit_transform(df[numerical_columns])
     
-    # Create directory for processed data if it does not exist
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    # Split data into train and test sets
+    train_df, test_df = train_test_split(df, test_size=test_size, random_state=random_state)
     
-    # Save the final dataset with engineered features
-    df.to_csv(output_path, index=False)
-    print(f"Final dataset with engineered features saved to {output_path}")
+    # Create directory for processed data if it does not exist
+    os.makedirs(os.path.dirname(train_output_path), exist_ok=True)
+    
+    # Save the train and test data
+    train_df.to_csv(train_output_path, index=False)
+    test_df.to_csv(test_output_path, index=False)
+    
+    print(f"Training data saved to {train_output_path}")
+    print(f"Test data saved to {test_output_path}")
 
 if __name__ == '__main__':
-    feature_engineering()
+    feature_engineering_and_split()
