@@ -6,9 +6,9 @@ from imblearn.under_sampling import RandomUnderSampler
 from imblearn.combine import SMOTEENN
 import os
 
-def handle_imbalance(input_path=r'C:\Users\Denny\insurance-risk-modeling\data\processed\final_insurance_data.csv', 
-                     output_train_path=r'C:\Users\Denny\insurance-risk-modeling\data\processed\train_balanced_data.csv',
-                     output_test_path=r'C:\Users\Denny\insurance-risk-modeling\data\processed\test_balanced_data.csv',
+def handle_imbalance(input_path= 'data/processed/final_insurance_data.csv', 
+                     output_train_path= 'data/processed/train_balanced_data.csv',
+                     output_test_path= 'data/processed/test_balanced_data.csv',
                      method='smote', test_size=0.2, random_state=42):
     # Load the dataset
     df = pd.read_csv(input_path)
