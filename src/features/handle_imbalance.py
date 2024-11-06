@@ -1,4 +1,3 @@
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
@@ -6,7 +5,7 @@ from imblearn.under_sampling import RandomUnderSampler
 from imblearn.combine import SMOTEENN
 import os
 
-def handle_imbalance(input_path= 'data/processed/final_insurance_data.csv', 
+def handle_imbalance(input_path= 'data/processed/train_data.csv', 
                      output_train_path= 'data/processed/train_balanced_data.csv',
                      output_test_path= 'data/processed/test_balanced_data.csv',
                      method='smote', test_size=0.2, random_state=42):

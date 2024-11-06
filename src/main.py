@@ -4,7 +4,7 @@ from data.clean_data import clean_data
 from features.feature_engineering import feature_engineering_and_split
 from features.handle_imbalance import handle_imbalance
 from models.train_logistic_regression import train_logistic_regression
-from models.random_forest_tuning import train_random_forest
+from models.train_random_forest import train_random_forest
 
 def run_pipeline():
     print("Starting Insurance Risk Modeling Pipeline...")
